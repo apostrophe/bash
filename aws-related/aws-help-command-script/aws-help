@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "aws help, enter command:"
+
+while true
+do
+	echo
+	read -p "aws-help> " commands_entered
+	#echo "debug - commands_entered: $commands_entered"
+
+#	if [[ $commands_entered == *"eb"* ]]; then
+#	  echo "** eb is it's own top-level command:  $ eb <sub-command> **"
+#	  continue
+#	fi
+
+	(aws $commands_entered help)
+done
