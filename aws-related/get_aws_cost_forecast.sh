@@ -1,16 +1,23 @@
 #!/bin/bash
 
+# usage:
+#  $ ./get_aws_cost_forecast.sh {optional comment}
+
+# example:
+#  $ ./get_aws_cost_forecast.sh after building new cloudformation stack
+
 # -e makes the whole script exit upon failure
 # -o pipeline forces a failure when there's a failure anywhere
 # in the pipeline (cmd1 | cmd2 | cmd3)  
 set -eo pipefail
 
-logFilePath="/home/bschilke/Documents/linux/scripts/aws-related/get_aws_forecast_log"
-# why you're checking, or a change you've made recently in your account
-comment=$1
+logFilePath="`pwd`/get_aws_forecast_log"
 
 echo >> $logFilePath
 echo `date` >> $logFilePath
+
+# why you're checking, or a change you've made recently in your account
+comment=$1
 
 if [ -n "$comment" ]
 then
