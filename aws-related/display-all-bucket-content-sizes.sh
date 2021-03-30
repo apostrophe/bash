@@ -14,7 +14,7 @@
 
 for bucket in $(aws s3 ls --recursive | awk '{print $3}')
 do
-	echo "bucket $bucket: `aws s3 ls s3://$bucket --recursive --summarize | tail -2`"
+	echo "bucket $bucket: `aws s3 ls s3://$bucket --recursive --human-readable --summarize | tail -2`"
 done
 
 # 
