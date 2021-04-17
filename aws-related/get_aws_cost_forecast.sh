@@ -11,7 +11,15 @@
 # in the pipeline (cmd1 | cmd2 | cmd3)  
 set -eo pipefail
 
-logFilePath="`pwd`/get_aws_forecast_log"
+logFilePath="`dirname \"$0\"`"              # relative
+logFilePath="`( cd \"$logFilePath\" && pwd )`/get_aws_cost_forecast_log"  # absolutized and normalized
+if [ -z "$logFilePath" ] ; then
+ 	echo "could not access path"
+	exit 1  # fail
+fi
+#echo "$logFilePath"
+
+#logFilePath="`pwd`/get_aws_forecast_log"
 
 echo >> $logFilePath
 echo `date` >> $logFilePath
